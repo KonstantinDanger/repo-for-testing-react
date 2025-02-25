@@ -1,11 +1,19 @@
 import clsx from "clsx";
-import "./Alert.css";
+import css from "./Alert.module.css";
+import { AiFillFire } from "react-icons/ai";
 
 export default function Alert({ variant, outlined, elevated, children }) {
-  const className = clsx("alert", variant, {
-    "is-outlined": outlined,
-    "is-elevated": elevated,
-  });
+  const className = clsx(
+    css[variant],
+    outlined && "is-outlined",
+    elevated && "is-elevated"
+  );
 
-  return <p className={className}>{children}</p>;
+  return (
+    <div>
+      <p className={className}>
+        <AiFillFire /> {children}
+      </p>
+    </div>
+  );
 }
